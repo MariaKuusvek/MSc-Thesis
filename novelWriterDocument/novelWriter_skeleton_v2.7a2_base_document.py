@@ -4,7 +4,6 @@ import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
 from PyQt5.QtCore import QTimer
-import tkinter as tk
 
 class Config:
     def __init__(self) -> None:
