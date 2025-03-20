@@ -1,9 +1,11 @@
 
+# Currently unfinished implementation
 import sys
 import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
 from PyQt5.QtCore import QTimer
+import hashlib
 
 class Config:
     def __init__(self) -> None:
@@ -33,7 +35,42 @@ class NWProject:
 class NWDocument:
     def __init__(self, project: NWProject, tHandle: str | None) -> None:
         self._project = project
-        self._handle = "novelWriter_autosave_1"
+        self._handle = "novelWriter_autosave_hash"
+        self._lastHash = None
+        self._hashError = False
+
+    def readDocument(self, isOrphan: bool = False) -> str | None:
+        """Read the document specified by the handle set in the
+        constructor, capturing potential file system errors and parse
+        meta data. If the document doesn't exist on disk, return an
+        empty string. If something went wrong, return None.
+        """
+
+        contentPath = self._project.storage.contentPath
+        docFile = f"{self._handle}.nwd"
+        docPath = contentPath / docFile
+        self._fileLoc = docPath
+
+        text = ""
+        self._docMeta = {}
+        self._lastHash = ""
+
+        with open(docPath, mode="r", encoding="utf-8") as inFile:
+            # Check the first <= 10 lines for metadata
+            for _ in range(10):
+                line = inFile.readline()
+                if line.startswith(r"%%~"):
+                    self._parseMeta(line)
+                else:
+                    text = line
+                    break
+            # Load the rest of the file
+            text += inFile.read()
+
+
+        self._lastHash = hashlib.sha1(text.encode()).hexdigest()
+
+        return text
 
     def writeDocument(self, text: str, forceWrite: bool = False) -> bool:
         """Write the document specified by the handle attribute. Handle
@@ -42,11 +79,24 @@ class NWDocument:
         """
 
         contentPath = self._project._storage.contentPath()
-
         docFile = f"{self._handle}.nwd"
-
         docPath = contentPath / docFile
         docTemp = docPath.with_suffix(".tmp")
+
+        prevHash = self._lastHash
+        self.readDocument()
+        if prevHash and self._lastHash != prevHash and not forceWrite:
+            self._hashError = True
+            return False
+
+        writeHash = hashlib.sha1(text.encode()).hexdigest()
+        #createdDate = self._docMeta.get("created", "Unknown")
+        #updatedDate = self._docMeta.get("updated", "Unknown")
+        #if writeHash != self._lastHash:
+        #    updatedDate = currTime
+        #if not docPath.is_file():
+        #    createdDate = currTime
+        #    updatedDate = currTime
 
         try:
             with open(docTemp, mode="w", encoding="utf-8") as outFile:
@@ -60,6 +110,9 @@ class NWDocument:
             docTemp.replace(docPath)
         except OSError as exc:
             return False
+        
+        self._lastHash = writeHash
+        self._hashError = False
 
         return True
 
@@ -80,10 +133,19 @@ class GuiDocEditor():
         """Save the text currently in the editor to the NWDocument
         object, and update the NWItem meta data.
         """
-
         docText = self.getText()
 
+        #if not >
         self._nwDocument.writeDocument(docText)
+
+        if self._nwDocument.hashError:
+            msgYes = SHARED.question(self.tr(
+                "This document has been changed outside of novelWriter "
+                "while it was open. Overwrite the file on disk?"
+            ))
+            if msgYes:
+                saveOk = self._nwDocument.writeDocument(docText, forceWrite=True)
+
 
         return True
 

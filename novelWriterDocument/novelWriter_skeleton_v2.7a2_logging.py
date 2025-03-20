@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
 from PyQt5.QtCore import QTimer
+logger = logging.getLogger(__name__)
 
 class Config:
     def __init__(self) -> None:
@@ -41,9 +42,12 @@ class NWDocument:
         if not.
         """
 
+        # Logging is actually in other features as well, perhaps create a file seperately of feature + logging?
+
         contentPath = self._project._storage.contentPath()
 
         docFile = f"{self._handle}.nwd"
+        logger.debug("Saving document: %s", docFile)
 
         docPath = contentPath / docFile
         docTemp = docPath.with_suffix(".tmp")
@@ -105,6 +109,7 @@ class GuiMain:
     
     def _autoSaveDocument(self) -> None:
         """Autosave of the document. This is a timer-activated slot."""
+        logger.debug("Auto-saving document")
         self.saveDocument()
 
     def saveDocument(self, force: bool = False) -> None:
