@@ -1,12 +1,10 @@
-
+# unifinished implementation
 import sys
 import os
 from pathlib import Path
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
-from PyQt5.QtCore import QTimer
-import logging
-logger = logging.getLogger(__name__)
-# Check if logger has seperate dir
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit, QPlainTextDocumentLayout
+from PyQt5.QtCore import QTimer, QObject, pyqtSignal
+from PyQt5.QtGui import QTextDocument
 
 class Config:
     def __init__(self) -> None:
@@ -44,13 +42,9 @@ class NWDocument:
         if not.
         """
 
-        # Logging is actually in other features as well, perhaps create a file seperately of feature + logging?
-
         contentPath = self._project._storage.contentPath()
 
         docFile = f"{self._handle}.nwd"
-        logger.debug("Saving document: %s", docFile)
-
         docPath = contentPath / docFile
         docTemp = docPath.with_suffix(".tmp")
 
@@ -60,8 +54,6 @@ class NWDocument:
         except Exception as exc:
             return False
 
-        # If we're here, the file was successfully saved, so we can
-        # replace the temp file with the actual file
         try:
             docTemp.replace(docPath)
         except OSError as exc:
@@ -69,13 +61,24 @@ class NWDocument:
 
         return True
 
+class GuiTextDocument(QTextDocument):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setDocumentLayout(QPlainTextDocumentLayout(self))
 
-class GuiDocEditor():
+class GuiDocEditor(QObject):
+
+    editedStatusChanged = pyqtSignal(bool)
 
     def __init__(self, text_widget: QPlainTextEdit, nw_document: NWDocument) -> None:
+        super().__init__()
         self._text_widget = text_widget
         self._nwDocument = nw_document
-
+        self._docChanged = False
+        self._qDocument = GuiTextDocument(self._text_widget)
+        self._text_widget.setDocument(self._qDocument)
+        self._qDocument.contentsChange.connect(self._docChange)
+        
     def getText(self) -> str:
         """
         Get text from the QPlainTextEdit.
@@ -91,7 +94,33 @@ class GuiDocEditor():
 
         self._nwDocument.writeDocument(docText)
 
+        self.setDocumentChanged(False)
+        #self.docTextChanged.emit(self._docHandle, self._lastEdit)
         return True
+    
+    @property
+    def docChanged(self) -> bool:
+        """Return the changed status of the document."""
+        return self._docChanged
+    
+    def setDocumentChanged(self, state: bool) -> None:
+        """Keep track of the document changed variable, and emit the
+        document change signal.
+        """
+        if self._docChanged != state:
+            self._docChanged = state
+            self.editedStatusChanged.emit(self._docChanged)
+        return
+
+    def _docChange(self, pos: int, removed: int, added: int) -> None:
+        """Triggered by QTextDocument->contentsChanged. This also
+        triggers the syntax highlighter.
+        """
+        print("contents change")
+        if not self._docChanged:
+            self.setDocumentChanged(removed != 0 or added != 0)
+
+        return
 
 class GuiMain:
     
@@ -111,12 +140,14 @@ class GuiMain:
     
     def _autoSaveDocument(self) -> None:
         """Autosave of the document. This is a timer-activated slot."""
-        logger.debug("Auto-saving document")
-        self.saveDocument()
+        if self.docEditor.docChanged:
+            print("savnig")
+            self.saveDocument()
 
     def saveDocument(self, force: bool = False) -> None:
         """Save the current documents."""
-        self.docEditor.saveText()
+        if self.docEditor.docChanged:
+            self.docEditor.saveText()
     
 def main():
     app = QApplication(sys.argv)

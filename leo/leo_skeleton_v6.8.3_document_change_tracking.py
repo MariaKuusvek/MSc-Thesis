@@ -12,6 +12,16 @@ class Commands:
         self.fileCommands = FileCommands()
         self.fileCommands.text_edit = text_edit
         self.mFileName: str = fileName or ''
+        self.changed = False
+
+    def setChanged(self) -> None:
+        c = self
+        c.changed = True
+
+    def clearChanged(self) -> None:
+        """clear the marker that indicates that the .leo file has been changed."""
+        c = self
+        c.changed = False
 
 class FileCommands:
     def __init__(self) -> None:
@@ -63,13 +73,14 @@ def onIdle(commands):
     Save the outline to a .bak file every "interval" seconds if it has changed.
     Make *no* changes to the UI and do *not* update c.changed.
     """
+    if not commands.changed:
+        return
     save(commands)
 
 def save(c: Commands) -> None:
     """Save c's outlines to a .bak file without changing any part of the UI."""
     fc = c.fileCommands
     fc.writeOutline(f"{c.mFileName}.bak")
-
 
 def main():
     app = QApplication(sys.argv)
@@ -87,6 +98,7 @@ def main():
     window.show()
 
     commands = Commands("leo_autosave_1", text_edit)
+    text_edit.textChanged.connect(lambda: commands.setChanged())
 
     timer = QTimer()
     timer.setInterval(5000)

@@ -20,6 +20,13 @@ class FileCommands:
         self.mFileName = ""
 
     def writeOutline(self, fileName: str) -> bool:
+        #c = self.c
+        #errors = c.checkOutline()
+        #if errors:
+        #    g.error('Structure errors in outline! outline not written')
+        #    return False
+        # Other file types and readonly file logic removed
+    
         return self.write_xml_file(fileName)
 
     def createBackupFile(self, fileName: str) -> str:
@@ -47,13 +54,21 @@ class FileCommands:
 
     def write_xml_file(self, fileName: str) -> bool:
         """Write the outline in .leo (XML) format."""
+        #c = self.c
         backupName = self.createBackupFile(fileName)
+        #if not ok:
+        #    return False
+        #try:
         f = open(fileName, 'wb')  # Must write bytes.
         self.mFileName = fileName
+        #except Exception:
+        #    g.es(f"can not open {fileName}")
+        #    return False
         s = self.outline_to_xml_string()
         # Write bytes.
         f.write(bytes(s, self.leo_file_encoding, 'replace'))
         f.close()
+        #c.setFileTimeStamp(fileName)
         if backupName:
             self.deleteBackupFile(backupName)
         return True
@@ -63,12 +78,40 @@ def onIdle(commands):
     Save the outline to a .bak file every "interval" seconds if it has changed.
     Make *no* changes to the UI and do *not* update c.changed.
     """
+    #global gDict
+    #if g.app.killed or g.unitTesting:
+    #    return
+    #c = keywords.get('c')
+    #d = gDict.get(c.hash())
+    #if not d or not c or not c.exists or not c.changed or not c.mFileName:
+    #    return
+    # Time interval section has been edited out to ensure tests are happening at the same interval
+    #save(c, d.get('verbose'))
     save(commands)
 
 def save(c: Commands) -> None:
     """Save c's outlines to a .bak file without changing any part of the UI."""
+
     fc = c.fileCommands
+    #old_log = g.app.log
+    # Make sure nothing goes to the log.
+    #try:
+    #    # Disable the log so that g.es will append to g.app.logWaiting.
+    #    g.app.log = None
+    #    # The following methods call g.es.
+    #    fc.writeAllAtFileNodes()  # Ignore any errors.
     fc.writeOutline(f"{c.mFileName}.bak")
+    #    if verbose:
+    #        print(f"Autosave: {time.ctime()} {c.shortFileName()}.bak")
+    #finally:
+    #    # Printing queued messages quickly becomes annoying.
+    #    if 0:
+    #        for msg in g.app.logWaiting:
+    #            s, color, newline = msg[:3]  # May have 4 elements.
+    #            print(s.rstrip())
+    #    # Restore the log.
+    #    g.app.logWaiting = []
+    #    g.app.log = old_log
 
 
 def main():

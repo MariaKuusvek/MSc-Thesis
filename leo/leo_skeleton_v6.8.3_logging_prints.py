@@ -63,12 +63,15 @@ def onIdle(commands):
     Save the outline to a .bak file every "interval" seconds if it has changed.
     Make *no* changes to the UI and do *not* update c.changed.
     """
-    save(commands)
+    save(commands, True)
 
-def save(c: Commands) -> None:
+def save(c: Commands, verbose) -> None:
     """Save c's outlines to a .bak file without changing any part of the UI."""
+
     fc = c.fileCommands
     fc.writeOutline(f"{c.mFileName}.bak")
+    if verbose:
+        print(f"Autosave: {c.mFileName}.bak")
 
 
 def main():
