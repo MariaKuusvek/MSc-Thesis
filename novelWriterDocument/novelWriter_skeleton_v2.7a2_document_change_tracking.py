@@ -116,7 +116,6 @@ class GuiDocEditor(QObject):
         """Triggered by QTextDocument->contentsChanged. This also
         triggers the syntax highlighter.
         """
-        print("contents change")
         if not self._docChanged:
             self.setDocumentChanged(removed != 0 or added != 0)
 
@@ -141,7 +140,6 @@ class GuiMain:
     def _autoSaveDocument(self) -> None:
         """Autosave of the document. This is a timer-activated slot."""
         if self.docEditor.docChanged:
-            print("savnig")
             self.saveDocument()
 
     def saveDocument(self, force: bool = False) -> None:

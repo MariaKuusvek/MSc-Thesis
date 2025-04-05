@@ -3,7 +3,7 @@ import sys
 import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
-from PyQt5.QtCore import QTimer
+from PyQt5.QtCore import QTimer, QObject
 
 class Config:
     def __init__(self) -> None:
@@ -108,9 +108,10 @@ class NWDocument:
         return True
 
 
-class GuiDocEditor():
+class GuiDocEditor(QObject):
 
     def __init__(self, text_widget: QPlainTextEdit, nw_document: NWDocument) -> None:
+        super().__init__()
         self._text_widget = text_widget
         self._nwDocument = nw_document
 
