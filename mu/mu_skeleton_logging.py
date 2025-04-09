@@ -55,7 +55,7 @@ def save_and_encode(text, filepath, newline=os.linesep):
 class Editor():
     def __init__(self, view, _text_widget):
         self._view = view
-        self._view.set_timer(5, self.autosave)
+        self._view.set_timer(10, self.autosave)
         self._text_widget = _text_widget
 
     def autosave(self):

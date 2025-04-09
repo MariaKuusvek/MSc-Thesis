@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "Starting Short Typing Group 1 Test"
 python3 something.py &
 PYTHON_PID=$!
 

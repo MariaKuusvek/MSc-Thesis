@@ -101,7 +101,7 @@ def main():
     text_edit.textChanged.connect(lambda: commands.setChanged())
 
     timer = QTimer()
-    timer.setInterval(5000)
+    timer.setInterval(10000)
     timer.timeout.connect(lambda: onIdle(commands))
     timer.start()
 

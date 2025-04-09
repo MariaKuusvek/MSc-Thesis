@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "Starting Long Typing Control Test"
 python3 base_skeleton_application.py &
 PYTHON_PID=$!
 

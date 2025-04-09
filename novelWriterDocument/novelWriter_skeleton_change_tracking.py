@@ -8,7 +8,7 @@ from PyQt5.QtGui import QTextDocument
 
 class Config:
     def __init__(self) -> None:
-        self.autoSaveDoc = 5     # Interval for auto-saving document, in seconds
+        self.autoSaveDoc = 10     # Interval for auto-saving document, in seconds
 
 CONFIG = Config()
 

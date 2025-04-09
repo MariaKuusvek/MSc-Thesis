@@ -132,7 +132,7 @@ def main():
     commands = Commands("leo_autosave_1", text_edit)
 
     timer = QTimer()
-    timer.setInterval(5000)
+    timer.setInterval(10000)
     timer.timeout.connect(lambda: onIdle(commands))
     timer.start()
 

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Starting Bash Script Control Test"
-
 sleep 5
 
 sudo perf stat -a \

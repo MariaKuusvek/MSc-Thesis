@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "Starting Long Typing Group 2 Test"
 python3 something.py &
 PYTHON_PID=$!
 

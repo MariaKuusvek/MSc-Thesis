@@ -7,7 +7,7 @@ from PyQt5.QtCore import QTimer, QObject
 
 class Config:
     def __init__(self) -> None:
-        self.autoSaveDoc = 5     # Interval for auto-saving document, in seconds
+        self.autoSaveDoc = 10     # Interval for auto-saving document, in seconds
 
 CONFIG = Config()
 
