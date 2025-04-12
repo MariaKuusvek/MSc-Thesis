@@ -12,7 +12,6 @@ class Commands:
         self.fileCommands = FileCommands()
         self.fileCommands.text_edit = text_edit
         self.mFileName: str = fileName or ''
-        self.changed = False
 
     def setChanged(self) -> None:
         c = self
@@ -26,7 +25,6 @@ class Commands:
 class FileCommands:
     def __init__(self) -> None:
         self.leo_file_encoding = 'utf-8'
-        self.mFileName = '' 
         self.mFileName = ""
 
     def writeOutline(self, fileName: str) -> bool:
@@ -77,10 +75,14 @@ def onIdle(commands):
         return
     save(commands)
 
-def save(c: Commands) -> None:
+def save(c: Commands, verbose) -> None:
     """Save c's outlines to a .bak file without changing any part of the UI."""
+
     fc = c.fileCommands
     fc.writeOutline(f"{c.mFileName}.bak")
+    if verbose:
+        print(f"Autosave: {c.mFileName}.bak")
+
 
 def main():
     app = QApplication(sys.argv)
@@ -98,7 +100,6 @@ def main():
     window.show()
 
     commands = Commands("leo_autosave_1", text_edit)
-    text_edit.textChanged.connect(lambda: commands.setChanged())
 
     timer = QTimer()
     timer.setInterval(10000)

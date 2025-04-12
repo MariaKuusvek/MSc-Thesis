@@ -1,3 +1,4 @@
+# Test this
 import sys
 import os
 from pathlib import Path
@@ -5,13 +6,14 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTe
 from PyQt5.QtCore import QTimer, QCoreApplication
 import logging
 logger = logging.getLogger(__name__)
-import platformdirs
-LOG_DIR = platformdirs.user_log_dir(appname="mu", appauthor="python")
+from logging.handlers import TimedRotatingFileHandler
+LOG_DIR = Path(os.curdir).resolve() 
 LOG_FILE = os.path.join(LOG_DIR, "mu.log")
+ENCODING = "utf-8"
 
 class Window():
-    def __init__(self, parent=None):
-        pass
+    def __init__(self, widget):
+        self._widget = widget
 
     def set_timer(self, duration, callback):
         """
@@ -20,6 +22,25 @@ class Window():
         self.timer = QTimer()
         self.timer.timeout.connect(callback)
         self.timer.start(duration * 1000)
+
+    @property
+    def widgets(self):
+        """
+        Returns a list of references to the widgets representing tabs in the
+        editor.
+        """
+        return [self._widget]
+
+    @property
+    def modified(self):
+        """
+        Returns a boolean indication if there are any modified tabs in the
+        editor.
+        """
+        for widget in self.widgets:
+            if widget.document().isModified():
+                return True
+        return False
 
 
 def write_and_flush(fileobj, content):
@@ -31,11 +52,6 @@ def write_and_flush(fileobj, content):
     """
     fileobj.write(content)
     fileobj.flush()
-    #
-    # Theoretically this shouldn't work; fsync takes a file descriptor,
-    # not a file object. However, there's obviously some under-the-cover
-    # mechanism which converts one to the other (at least on Windows)
-    #
     os.fsync(fileobj)
 
 def save_and_encode(text, filepath, newline=os.linesep):
@@ -52,6 +68,32 @@ def save_and_encode(text, filepath, newline=os.linesep):
         )
         write_and_flush(f, text_to_write)
 
+def setup_logging():
+    """
+    Configure logging.
+    """
+    os.makedirs(LOG_DIR, exist_ok=True)
+
+    # set logging format
+    log_fmt = (
+        "%(asctime)s - %(name)s:%(lineno)d(%(funcName)s) "
+        "%(levelname)s: %(message)s"
+    )
+    formatter = logging.Formatter(log_fmt)
+
+    # define log handlers such as for rotating log files
+    handler = TimedRotatingFileHandler(
+        LOG_FILE, when="midnight", backupCount=5, delay=0, encoding=ENCODING
+    )
+    handler.setFormatter(formatter)
+    handler.setLevel(logging.DEBUG)
+
+    # set up primary log
+    log = logging.getLogger()
+    log.setLevel(logging.DEBUG)
+    log.addHandler(handler)
+
+
 class Editor():
     def __init__(self, view, _text_widget):
         self._view = view
@@ -62,11 +104,12 @@ class Editor():
         """
         Cycles through each tab and, if changed, saves it to the filesystem.
         """
-        self.save_tab_to_file(self._text_widget, show_error_messages=False)
-        logger.info(
-            "Autosave detected and saved "
-            "changes in {}.".format("mu_autosave_1.py")
-        )
+        if self._view.modified:
+            self.save_tab_to_file(self._text_widget, show_error_messages=False)
+            logger.info(
+                "Autosave detected and saved "
+                "changes in {}.".format("mu_autosave_1.py")
+            )
 
 
     def save_tab_to_file(self, tab, show_error_messages=True):
@@ -94,7 +137,8 @@ def main():
     window.resize(400, 300)
     window.show()
 
-    newWindow = Window()
+    setup_logging()
+    newWindow = Window(text_edit)
     editor = Editor(newWindow, text_edit)
 
     sys.exit(app.exec_())

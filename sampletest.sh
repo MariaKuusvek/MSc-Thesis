@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "Starting Name Control Test"
 python3 folder/file &
 PYTHON_PID=&!
 

@@ -10,11 +10,13 @@ sudo perf stat -a \
     sleep 120 >> filename.txt 2>&1 &
 PERF_PID=$!
 
+xclip -selection clipboard < Hello.txt
+
 WINDOW_ID=&(xdotool search --name "Simple PyQt Text Input")
 xdotool windowactivate WINDOW_ID
 
 for i in {1..12}; do
-    xdotool type "Hello"
+    xdotool key ctrl+v
     sleep 10
 done
 
