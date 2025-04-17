@@ -140,7 +140,6 @@ class GuiMain:
         return
     
     def _autoSaveDocument(self) -> None:
-        print("checking for save")
         """Autosave of the document. This is a timer-activated slot."""
         if self.docEditor.docChanged:
             logger.debug("Auto-saving document")

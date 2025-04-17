@@ -12,6 +12,7 @@ class Commands:
         self.fileCommands = FileCommands()
         self.fileCommands.text_edit = text_edit
         self.mFileName: str = fileName or ''
+        self.changed = False
 
     def setChanged(self) -> None:
         c = self

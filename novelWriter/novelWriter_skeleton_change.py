@@ -137,7 +137,6 @@ class GuiMain:
         return
     
     def _autoSaveDocument(self) -> None:
-        print("checking for save")
         """Autosave of the document. This is a timer-activated slot."""
         if self.docEditor.docChanged:
             self.saveDocument()
@@ -145,7 +144,6 @@ class GuiMain:
     def saveDocument(self, force: bool = False) -> None:
         """Save the current documents."""
         if self.docEditor.docChanged:
-            print("saving")
             self.docEditor.saveText()
     
 def main():

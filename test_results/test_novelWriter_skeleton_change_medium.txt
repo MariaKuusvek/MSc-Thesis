@@ -1,0 +1,450 @@
+
+ Performance counter stats for 'system wide':
+
+             43,51 Joules power/energy-pkg/                                                     
+              5,11 Joules power/energy-cores/                                                   
+     2 549 127 521        cycles                                                                
+     1 044 811 007        instructions                     #    0,41  insn per cycle            
+        94 643 346        cache-references                                                      
+        39 217 862        cache-misses                     #   41,44% of all cache refs         
+            30 925        cs                                                                    
+               265        migrations                                                            
+             1 012        page-faults                                                           
+
+     120,002032668 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             60,37 Joules power/energy-pkg/                                                     
+              5,25 Joules power/energy-cores/                                                   
+     2 555 623 109        cycles                                                                
+     1 095 999 738        instructions                     #    0,43  insn per cycle            
+        96 617 155        cache-references                                                      
+        39 690 040        cache-misses                     #   41,08% of all cache refs         
+            31 214        cs                                                                    
+               303        migrations                                                            
+             1 959        page-faults                                                           
+
+     120,002164399 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             43,12 Joules power/energy-pkg/                                                     
+              4,98 Joules power/energy-cores/                                                   
+     2 364 338 475        cycles                                                                
+     1 086 364 536        instructions                     #    0,46  insn per cycle            
+        95 608 476        cache-references                                                      
+        39 132 929        cache-misses                     #   40,93% of all cache refs         
+            31 330        cs                                                                    
+               374        migrations                                                            
+               955        page-faults                                                           
+
+     120,002480560 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             54,94 Joules power/energy-pkg/                                                     
+              5,24 Joules power/energy-cores/                                                   
+     2 469 027 613        cycles                                                                
+     1 127 783 863        instructions                     #    0,46  insn per cycle            
+        96 252 327        cache-references                                                      
+        39 488 548        cache-misses                     #   41,03% of all cache refs         
+            31 372        cs                                                                    
+               299        migrations                                                            
+             1 653        page-faults                                                           
+
+     120,002348142 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             49,05 Joules power/energy-pkg/                                                     
+              5,07 Joules power/energy-cores/                                                   
+     2 414 574 062        cycles                                                                
+     1 106 002 828        instructions                     #    0,46  insn per cycle            
+        96 617 922        cache-references                                                      
+        38 977 791        cache-misses                     #   40,34% of all cache refs         
+            31 729        cs                                                                    
+               306        migrations                                                            
+               947        page-faults                                                           
+
+     120,002503414 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             46,62 Joules power/energy-pkg/                                                     
+              5,11 Joules power/energy-cores/                                                   
+     2 406 860 611        cycles                                                                
+     1 113 122 893        instructions                     #    0,46  insn per cycle            
+        97 696 252        cache-references                                                      
+        39 318 042        cache-misses                     #   40,25% of all cache refs         
+            31 209        cs                                                                    
+               307        migrations                                                            
+               962        page-faults                                                           
+
+     120,002208864 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             59,40 Joules power/energy-pkg/                                                     
+              5,29 Joules power/energy-cores/                                                   
+     2 543 701 236        cycles                                                                
+     1 046 683 209        instructions                     #    0,41  insn per cycle            
+        95 572 324        cache-references                                                      
+        40 030 371        cache-misses                     #   41,88% of all cache refs         
+            30 608        cs                                                                    
+               268        migrations                                                            
+             1 597        page-faults                                                           
+
+     120,002448225 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             54,77 Joules power/energy-pkg/                                                     
+              5,26 Joules power/energy-cores/                                                   
+     2 591 381 890        cycles                                                                
+     1 071 988 339        instructions                     #    0,41  insn per cycle            
+        98 185 943        cache-references                                                      
+        40 076 394        cache-misses                     #   40,82% of all cache refs         
+            31 130        cs                                                                    
+               349        migrations                                                            
+               976        page-faults                                                           
+
+     120,002422004 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             47,65 Joules power/energy-pkg/                                                     
+              5,02 Joules power/energy-cores/                                                   
+     2 377 529 576        cycles                                                                
+     1 089 903 546        instructions                     #    0,46  insn per cycle            
+        90 215 837        cache-references                                                      
+        39 995 543        cache-misses                     #   44,33% of all cache refs         
+            31 155        cs                                                                    
+               259        migrations                                                            
+             2 006        page-faults                                                           
+
+     120,002340675 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             45,22 Joules power/energy-pkg/                                                     
+              5,24 Joules power/energy-cores/                                                   
+     2 419 121 724        cycles                                                                
+     1 100 899 439        instructions                     #    0,46  insn per cycle            
+        91 272 301        cache-references                                                      
+        39 883 559        cache-misses                     #   43,70% of all cache refs         
+            31 539        cs                                                                    
+               297        migrations                                                            
+             1 614        page-faults                                                           
+
+     120,002751173 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             46,92 Joules power/energy-pkg/                                                     
+              5,29 Joules power/energy-cores/                                                   
+     2 474 174 270        cycles                                                                
+     1 142 769 425        instructions                     #    0,46  insn per cycle            
+        96 424 763        cache-references                                                      
+        40 140 637        cache-misses                     #   41,63% of all cache refs         
+            31 610        cs                                                                    
+               338        migrations                                                            
+             1 657        page-faults                                                           
+
+     120,002682063 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             51,20 Joules power/energy-pkg/                                                     
+              4,99 Joules power/energy-cores/                                                   
+     2 343 277 629        cycles                                                                
+     1 083 272 191        instructions                     #    0,46  insn per cycle            
+        92 608 021        cache-references                                                      
+        38 948 302        cache-misses                     #   42,06% of all cache refs         
+            31 322        cs                                                                    
+               318        migrations                                                            
+               970        page-faults                                                           
+
+     120,002482295 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             41,51 Joules power/energy-pkg/                                                     
+              5,21 Joules power/energy-cores/                                                   
+     2 449 883 406        cycles                                                                
+     1 062 306 736        instructions                     #    0,43  insn per cycle            
+        92 447 410        cache-references                                                      
+        40 442 656        cache-misses                     #   43,75% of all cache refs         
+            31 964        cs                                                                    
+               306        migrations                                                            
+               973        page-faults                                                           
+
+     120,001663400 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             45,36 Joules power/energy-pkg/                                                     
+              5,25 Joules power/energy-cores/                                                   
+     2 485 827 505        cycles                                                                
+     1 147 151 581        instructions                     #    0,46  insn per cycle            
+        82 917 138        cache-references                                                      
+        39 817 353        cache-misses                     #   48,02% of all cache refs         
+            32 444        cs                                                                    
+               311        migrations                                                            
+             1 884        page-faults                                                           
+
+     120,002167221 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             48,46 Joules power/energy-pkg/                                                     
+              4,88 Joules power/energy-cores/                                                   
+     2 276 333 097        cycles                                                                
+     1 040 777 118        instructions                     #    0,46  insn per cycle            
+        91 197 925        cache-references                                                      
+        38 949 911        cache-misses                     #   42,71% of all cache refs         
+            30 984        cs                                                                    
+               290        migrations                                                            
+               960        page-faults                                                           
+
+     120,002662019 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             46,78 Joules power/energy-pkg/                                                     
+              5,02 Joules power/energy-cores/                                                   
+     2 525 313 838        cycles                                                                
+     1 117 774 284        instructions                     #    0,44  insn per cycle            
+       104 219 751        cache-references                                                      
+        40 723 257        cache-misses                     #   39,07% of all cache refs         
+            31 168        cs                                                                    
+               448        migrations                                                            
+             1 949        page-faults                                                           
+
+     120,001894660 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             42,46 Joules power/energy-pkg/                                                     
+              5,01 Joules power/energy-cores/                                                   
+     2 319 738 250        cycles                                                                
+     1 078 435 717        instructions                     #    0,46  insn per cycle            
+        88 842 747        cache-references                                                      
+        38 339 989        cache-misses                     #   43,15% of all cache refs         
+            31 198        cs                                                                    
+               297        migrations                                                            
+               951        page-faults                                                           
+
+     120,001998538 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             53,60 Joules power/energy-pkg/                                                     
+              5,07 Joules power/energy-cores/                                                   
+     2 343 350 894        cycles                                                                
+     1 067 924 302        instructions                     #    0,46  insn per cycle            
+        91 777 862        cache-references                                                      
+        38 782 214        cache-misses                     #   42,26% of all cache refs         
+            31 419        cs                                                                    
+               318        migrations                                                            
+               948        page-faults                                                           
+
+     120,002177112 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             49,72 Joules power/energy-pkg/                                                     
+              5,09 Joules power/energy-cores/                                                   
+     2 332 832 399        cycles                                                                
+     1 073 257 596        instructions                     #    0,46  insn per cycle            
+        86 500 458        cache-references                                                      
+        39 155 617        cache-misses                     #   45,27% of all cache refs         
+            31 598        cs                                                                    
+               298        migrations                                                            
+               956        page-faults                                                           
+
+     120,002733562 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             43,64 Joules power/energy-pkg/                                                     
+              4,98 Joules power/energy-cores/                                                   
+     2 397 208 053        cycles                                                                
+     1 117 367 499        instructions                     #    0,47  insn per cycle            
+        91 482 218        cache-references                                                      
+        39 314 116        cache-misses                     #   42,97% of all cache refs         
+            31 629        cs                                                                    
+               317        migrations                                                            
+               947        page-faults                                                           
+
+     120,002012597 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             42,30 Joules power/energy-pkg/                                                     
+              5,17 Joules power/energy-cores/                                                   
+     2 495 683 423        cycles                                                                
+     1 131 488 449        instructions                     #    0,45  insn per cycle            
+        97 303 784        cache-references                                                      
+        40 543 563        cache-misses                     #   41,67% of all cache refs         
+            31 734        cs                                                                    
+               310        migrations                                                            
+             1 793        page-faults                                                           
+
+     120,002321108 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             55,79 Joules power/energy-pkg/                                                     
+              5,12 Joules power/energy-cores/                                                   
+     2 357 568 273        cycles                                                                
+     1 083 891 869        instructions                     #    0,46  insn per cycle            
+        92 870 283        cache-references                                                      
+        38 734 503        cache-misses                     #   41,71% of all cache refs         
+            31 271        cs                                                                    
+               363        migrations                                                            
+             1 008        page-faults                                                           
+
+     120,002354269 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             50,86 Joules power/energy-pkg/                                                     
+              5,34 Joules power/energy-cores/                                                   
+     2 687 944 613        cycles                                                                
+     1 113 175 863        instructions                     #    0,41  insn per cycle            
+       100 204 965        cache-references                                                      
+        40 557 376        cache-misses                     #   40,47% of all cache refs         
+            31 199        cs                                                                    
+               297        migrations                                                            
+             1 916        page-faults                                                           
+
+     120,002400242 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             40,36 Joules power/energy-pkg/                                                     
+              5,01 Joules power/energy-cores/                                                   
+     2 361 925 263        cycles                                                                
+     1 081 848 171        instructions                     #    0,46  insn per cycle            
+        85 635 754        cache-references                                                      
+        39 394 130        cache-misses                     #   46,00% of all cache refs         
+            31 419        cs                                                                    
+               315        migrations                                                            
+               954        page-faults                                                           
+
+     120,002548576 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             50,21 Joules power/energy-pkg/                                                     
+              5,13 Joules power/energy-cores/                                                   
+     2 433 977 897        cycles                                                                
+     1 104 190 986        instructions                     #    0,45  insn per cycle            
+        95 139 901        cache-references                                                      
+        39 250 427        cache-misses                     #   41,26% of all cache refs         
+            31 346        cs                                                                    
+               291        migrations                                                            
+               988        page-faults                                                           
+
+     120,002469200 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             42,37 Joules power/energy-pkg/                                                     
+              4,86 Joules power/energy-cores/                                                   
+     2 317 998 452        cycles                                                                
+     1 097 116 652        instructions                     #    0,47  insn per cycle            
+        89 728 738        cache-references                                                      
+        40 087 741        cache-misses                     #   44,68% of all cache refs         
+            31 319        cs                                                                    
+               523        migrations                                                            
+             1 948        page-faults                                                           
+
+     120,002442268 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             57,46 Joules power/energy-pkg/                                                     
+              5,20 Joules power/energy-cores/                                                   
+     2 446 118 501        cycles                                                                
+     1 119 299 963        instructions                     #    0,46  insn per cycle            
+        96 104 689        cache-references                                                      
+        39 408 512        cache-misses                     #   41,01% of all cache refs         
+            31 806        cs                                                                    
+               319        migrations                                                            
+             1 591        page-faults                                                           
+
+     120,002068936 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             56,10 Joules power/energy-pkg/                                                     
+              5,08 Joules power/energy-cores/                                                   
+     2 462 357 472        cycles                                                                
+     1 117 041 785        instructions                     #    0,45  insn per cycle            
+        95 291 299        cache-references                                                      
+        39 488 263        cache-misses                     #   41,44% of all cache refs         
+            31 594        cs                                                                    
+               307        migrations                                                            
+             1 657        page-faults                                                           
+
+     120,002313574 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             46,41 Joules power/energy-pkg/                                                     
+              5,18 Joules power/energy-cores/                                                   
+     2 421 122 814        cycles                                                                
+     1 142 405 026        instructions                     #    0,47  insn per cycle            
+        91 987 848        cache-references                                                      
+        38 986 840        cache-misses                     #   42,38% of all cache refs         
+            31 650        cs                                                                    
+               283        migrations                                                            
+               991        page-faults                                                           
+
+     120,001537188 seconds time elapsed
+
+
+ Performance counter stats for 'system wide':
+
+             54,41 Joules power/energy-pkg/                                                     
+              5,01 Joules power/energy-cores/                                                   
+     2 310 051 324        cycles                                                                
+     1 078 392 026        instructions                     #    0,47  insn per cycle            
+        81 966 814        cache-references                                                      
+        38 482 307        cache-misses                     #   46,95% of all cache refs         
+            31 082        cs                                                                    
+               273        migrations                                                            
+               945        page-faults                                                           
+
+     120,002115736 seconds time elapsed
+
