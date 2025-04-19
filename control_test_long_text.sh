@@ -7,10 +7,10 @@ sleep 5
 
 sudo perf stat -a \
     -e power/energy-pkg/,power/energy-cores/,cycles,instructions,cache-references,cache-misses,cs,migrations,page-faults \
-    sleep 120 >> control_test_long_typing.txt 2>&1 &
+    sleep 120 >> control_test_long.txt 2>&1 &
 PERF_PID=$!
 
-xclip -selection clipboard < LoremIpsum2.txt
+xclip -selection clipboard < LoremIpsum_50KB.txt
 
 WINDOW_ID=&(xdotool search --name "Simple PyQt Text Input")
 xdotool windowactivate WINDOW_ID

@@ -1,4 +1,8 @@
 import re
+
+# ChatGPT was used to help create this file
+# Specifically, regular expressions were created entirely by GPT. The format of the file to be parsed was given to GPT.
+
 def parse_file(file_path):
     with open(file_path, 'r', encoding="utf-8") as f:
         content = f.read()
@@ -52,8 +56,7 @@ def compute_averages(aggregated):
         averages[key] = sum(values) / len(values) if values else 0
     return averages
 
-
-file_data = parse_file("leo_skeleton_base_group1_short_typing_test.txt")
+file_data = parse_file("test_results/control_test_long.txt")
 
 print(file_data)
 
