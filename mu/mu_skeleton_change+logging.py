@@ -3,7 +3,7 @@ import sys
 import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
-from PyQt5.QtCore import QTimer, QCoreApplication
+from PyQt5.QtCore import QTimer
 import logging
 logger = logging.getLogger(__name__)
 from logging.handlers import TimedRotatingFileHandler
@@ -121,6 +121,7 @@ class Editor():
         logger.info("Saving script to: {}".format("mu_autosave_1.py"))
         logger.debug(tab.toPlainText())
         save_and_encode(tab.toPlainText(), Path(os.curdir).resolve()  / "mu_autosave_1.py")
+        tab.document().setModified(False)
 
 def main():
     app = QApplication(sys.argv)

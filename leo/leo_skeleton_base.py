@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTe
 from PyQt5.QtCore import QTimer
 import os
 import tempfile
-import xml.etree.ElementTree as ElementTree
 
 class Commands:
     def __init__(self, fileName: str, text_edit: QPlainTextEdit) -> None:

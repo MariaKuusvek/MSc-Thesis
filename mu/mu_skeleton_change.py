@@ -2,7 +2,7 @@ import sys
 import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
-from PyQt5.QtCore import QTimer, QCoreApplication
+from PyQt5.QtCore import QTimer
 
 class Window():
     def __init__(self, widget):
@@ -81,7 +81,7 @@ class Editor():
         reported and the tab status will continue to show as Modified.
         """
         save_and_encode(tab.toPlainText(), Path(os.curdir).resolve()  / "mu_autosave_1.py")
-
+        tab.document().setModified(False)
 
 def main():
     app = QApplication(sys.argv)

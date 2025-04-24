@@ -16,11 +16,7 @@ for program in "${programs[@]}"; do
 
     prog_basename=$(basename "$program" .py)
 
-    if [[ "$program" == *"change+logging"* ]]; then
-        scenarios=("medium" "long")
-    else
-        scenarios=("empty" "medium" "long")
-    fi
+    scenarios=("empty" "medium" "long")
 
     for scenario in "${scenarios[@]}"; do
         result_file="test_${prog_basename}_${scenario}.txt"

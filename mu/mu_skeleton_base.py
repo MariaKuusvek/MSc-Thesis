@@ -2,7 +2,7 @@ import sys
 import os
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit
-from PyQt5.QtCore import QTimer, QCoreApplication
+from PyQt5.QtCore import QTimer
 
 class Window():
     def __init__(self, parent=None):
@@ -26,11 +26,6 @@ def write_and_flush(fileobj, content):
     """
     fileobj.write(content)
     fileobj.flush()
-    #
-    # Theoretically this shouldn't work; fsync takes a file descriptor,
-    # not a file object. However, there's obviously some under-the-cover
-    # mechanism which converts one to the other (at least on Windows)
-    #
     os.fsync(fileobj)
 
 def save_and_encode(text, filepath, newline=os.linesep):

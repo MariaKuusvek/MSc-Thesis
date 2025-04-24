@@ -1,6 +1,7 @@
 import sys
 import os
 from pathlib import Path
+import getopt 
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPlainTextEdit, QPlainTextDocumentLayout
 from PyQt5.QtCore import QTimer, QObject, pyqtSignal
 from PyQt5.QtGui import QTextDocument
@@ -150,7 +151,57 @@ class GuiMain:
         if self.docEditor.docChanged:
             self.docEditor.saveText()
     
+RED    = "\033[91m"
+GREEN  = "\033[92m"
+YELLOW = "\033[93m"
+BLUE   = "\033[94m"
+WHITE  = "\033[97m"
+END    = "\033[0m"
+
+TIME = "[{asctime:}]"
+FILE = "{filename:>18}"
+LINE = "{lineno:<4d}"
+LVLP = "{levelname:8}"
+LVLC = "{levelname:17}"
+TEXT = "{message:}"
+
 def main():
+    # Use 2 standard options 
+    sysArgs = ["--debug", "--color"]
+    shortOpt = "hv"
+    longOpt  = ["help", "version", "info", "debug", "color", "meminfo"]
+
+    logLevel = logging.WARN
+    fmtFlags = 0b00
+
+    inOpts, inRemain = getopt.getopt(sysArgs, shortOpt, longOpt)
+
+    for inOpt, inArg in inOpts:
+        if inOpt == "--debug":
+            print("debug")
+            CONFIG.isDebug = True
+            fmtFlags     |= 0b10
+            logLevel      = logging.DEBUG
+        elif inOpt == "--color":
+            print("color")
+            fmtFlags     |= 0b01
+
+    if fmtFlags & 0b01:
+        logging.addLevelName(logging.DEBUG,    f"{BLUE}DEBUG{END}")
+        logging.addLevelName(logging.INFO,     f"{GREEN}INFO{END}")
+        logging.addLevelName(logging.WARNING,  f"{YELLOW}WARNING{END}")
+        logging.addLevelName(logging.ERROR,    f"{RED}ERROR{END}")
+        logging.addLevelName(logging.CRITICAL, f"{RED}CRITICAL{END}")
+
+    logFmt = f"{TIME}  {BLUE}{FILE}{END}:{WHITE}{LINE}{END}  {LVLC}  {TEXT}"
+
+    pkgLogger = logging.getLogger(__package__ or "__main__")
+    pkgLogger.setLevel(logLevel)
+    if not pkgLogger.handlers:
+        ch = logging.StreamHandler()
+        ch.setFormatter(logging.Formatter(fmt=logFmt, style="{"))
+        pkgLogger.addHandler(ch)
+
     app = QApplication(sys.argv)
 
     window = QWidget()
